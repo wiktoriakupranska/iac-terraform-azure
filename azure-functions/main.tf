@@ -1,30 +1,27 @@
 resource "azurerm_resource_group" "example" {
-  name     = "example"
-  location = "West Europe"
+  name     = var.azurem_resource_group-name
+  location = var.azurem_resource_group_location
 }
 resource "azurerm_storage_account" "example" {
-  name                     = "storageaccountname"
+  name                     = var.azurem_resource_group-name
   resource_group_name      = azurerm_resource_group.example.name
   location                 = azurerm_resource_group.example.location
-  account_tier             = "Standard"
-  account_replication_type = "GRS"
-
-  tags = {
-    environment = "staging"
-  }
+  account_tier             =  var.account_tier
+  account_replication_type = var.account_replication_type
+  
 }
 resource "azurerm_app_service_plan" "example" {
-  name                = "api-appserviceplan-pro"
+  name                = var.azurerm_service_planName
   location            = azurerm_resource_group.example.location
   resource_group_name = azurerm_resource_group.example.name
 
   sku {
-    tier = "Standard"
-    size = "S1"
+    tier = var.sku_tier
+    size = var.sku_size
   }
 }
 resource "azurerm_linux_function_app" "example" {
-  name                = "example-linux-function-app"
+  name                = var.azurerm_linux_function_app_name
   resource_group_name = azurerm_resource_group.example.name
   location            = azurerm_resource_group.example.location
 
@@ -33,3 +30,4 @@ resource "azurerm_linux_function_app" "example" {
 
   site_config {}
 }
+
