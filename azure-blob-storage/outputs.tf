@@ -1,3 +1,3 @@
-output "service_plan_id " {
-    value = azurerm_app_service_plan.example.id
+output "azurerm_storage_blob_url " {
+    value = azurerm_storage_blob_url.example.url
 }
