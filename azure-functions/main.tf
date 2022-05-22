@@ -11,7 +11,7 @@ resource "azurerm_storage_account" "example" {
   
 }
 resource "azurerm_app_service_plan" "example" {
-  name                = var.azurerm_service_planName
+  name                = var.azurerm_service_NameOfThePlan
   location            = azurerm_resource_group.example.location
   resource_group_name = azurerm_resource_group.example.name
 
