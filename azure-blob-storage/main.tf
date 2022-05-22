@@ -11,14 +11,13 @@ resource "azurerm_storage_account" "example" {
   
 }
 resource "azurerm_storage_container" "example" {
-  name                  = "vhds"
+  name                  = var.azurerm_storage_container_kontener
   storage_account_name  = azurerm_storage_account.example.name
-  container_access_type = "private"
+  container_access_type = var.container_access_type
 }
 resource "azurerm_storage_blob" "example" {
-  name                   = "my-awesome-content.zip"
+  name                   = var.azurerm_storage_blob_skladzik
   storage_account_name   = azurerm_storage_account.example.name
   storage_container_name = azurerm_storage_container.example.name
-  type                   = "Block"
-  source                 = "some-local-file.zip"
+  type                   = var.azurerm_storage_blob_type
 }
