@@ -34,9 +34,9 @@ variable "sku_size" {
   type = string
   default = "S1"
 }
-variable "azurerm_service_ {
+variable "azurerm_service_NameOfThePlan"{
 	type = string
-	default = ""
+	default = "NameOfThePlan"
   
 }
 variable "azurerm_linux_function_app_name" {
